@@ -5,12 +5,15 @@ import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.oss.driver.api.core.cql.PreparedStatement;
 import com.datastax.oss.driver.api.core.cql.ResultSet;
 import com.datastax.oss.driver.api.core.cql.Row;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.time.Duration;
 import java.util.Optional;
 
 
 public class LockSelectStatement {
+
+    private static final Logger LOG = LoggerFactory.getLogger( LockSelectStatement.class );
 
     private final CqlSession        session;
     private final PreparedStatement stmt;
@@ -37,11 +40,15 @@ public class LockSelectStatement {
             return Optional.empty();
         }
 
+        LockSelectResult selectResult = LockSelectResult.builder()
+                .key(row.getString("key"))
+                .owner(row.getString("owner"))
+                .build();
+
+        LOG.debug("Select result: {}", selectResult);
+
         return Optional.of(
-                LockSelectResult.builder()
-                        .key          (row.getString("key"))
-                        .owner        (row.getString("owner"))
-                        .build()
+                selectResult
         );
     }
 }

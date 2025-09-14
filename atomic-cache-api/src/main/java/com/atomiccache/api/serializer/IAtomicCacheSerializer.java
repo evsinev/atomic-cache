@@ -1,9 +1,9 @@
 package com.atomiccache.api.serializer;
 
-public interface IAtomicCacheSerializer<K, P>
+public interface IAtomicCacheSerializer<K, V>
         extends
         IAtomicCacheKeySerializer<K>,
-        IAtomicCacheValueSerializer<P>,
-        IAtomicCacheValueDeserializer<P>
+        IAtomicCacheValueSerializer<V>,
+        IAtomicCacheValueDeserializer<V>
 {
 }

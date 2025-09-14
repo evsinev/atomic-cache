@@ -5,7 +5,7 @@ import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.oss.driver.api.core.cql.PreparedStatement;
 import com.datastax.oss.driver.api.core.cql.ResultSet;
 
-import java.time.Duration;
+import java.util.UUID;
 
 
 public class LockDeleteStatement {
@@ -25,7 +25,7 @@ public class LockDeleteStatement {
         ResultSet execute = session.execute(
                 stmt.boundStatementBuilder()
                         .setString (0, key)
-                        .setString (1, "no-owner")
+                        .setString (1, "no-owner-" + UUID.randomUUID())
                         .setSerialConsistencyLevel(ConsistencyLevel.LOCAL_SERIAL)
                         .setConsistencyLevel(ConsistencyLevel.LOCAL_QUORUM)
                         .build()

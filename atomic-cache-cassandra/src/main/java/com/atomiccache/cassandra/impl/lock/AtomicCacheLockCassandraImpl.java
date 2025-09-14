@@ -57,7 +57,9 @@ public class AtomicCacheLockCassandraImpl<K> implements IAtomicCacheLock<K> {
 
         while (condition.awaitCanRun()) {
             Optional<LockSelectResult> selectResult = dao.selectLock(aKey);
+
             if (!selectResult.isPresent()) {
+                LOG.warn("Lock not found, exiting: {}", selectResult);
                 break;
             }
 

@@ -129,4 +129,13 @@ CREATE TABLE atomic_cache_lock
     owner               text,
     PRIMARY KEY (key)
 ) with default_time_to_live = 120;
+
+CREATE TABLE atomic_cache_map
+(
+    key                 text,
+    value               text,
+    always_null         text,
+    PRIMARY KEY (key)
+) with default_time_to_live = 86400;
+
 ```

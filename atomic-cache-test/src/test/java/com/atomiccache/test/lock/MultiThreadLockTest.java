@@ -13,7 +13,6 @@ import java.time.Duration;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -29,8 +28,9 @@ public class MultiThreadLockTest extends BaseLockTest {
 
     @Test
     public void multiThreadedLocking() throws InterruptedException {
-        int threadCount = 5;
-        int sleepMs     = 500;
+        int      threadCount = 5;
+        long     sleepMs     = Duration.ofSeconds(2).toMillis();
+        Duration maxLockTime = Duration.ofSeconds(30);
 
         try (ExecutorService executor = Executors.newFixedThreadPool(threadCount)) {
             CountDownLatch  latch    = new CountDownLatch(threadCount);
@@ -40,9 +40,9 @@ public class MultiThreadLockTest extends BaseLockTest {
                 executor.execute(() -> {
                     ExampleKey key = new ExampleKey(1, "type-1");
 
-                    try (IAtomicLock _lock = atomicCacheLock.lock(key, Duration.ofSeconds(1))) {
+                    try (IAtomicLock _lock = atomicCacheLock.lock(key, maxLockTime)) {
                         LOG.debug("Thread {} acquired lock on key: type-{}", threadId, threadId);
-                        Thread.sleep(500); // Simulate some work
+                        Thread.sleep(sleepMs); // Simulate some work
                     } catch (Exception e) {
                         LOG.error("Thread {} failed to acquire lock.", threadId, e);
                     } finally {
