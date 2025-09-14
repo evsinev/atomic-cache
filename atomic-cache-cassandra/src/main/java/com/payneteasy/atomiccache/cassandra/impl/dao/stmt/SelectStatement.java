@@ -29,6 +29,7 @@ public class SelectStatement {
                 stmt.boundStatementBuilder()
                         .setString  (0, key)
                         .setSerialConsistencyLevel(ConsistencyLevel.LOCAL_SERIAL)
+                        .setConsistencyLevel(ConsistencyLevel.LOCAL_QUORUM)
                         .build()
         );
 

@@ -35,6 +35,7 @@ public class UpdateErrorStatement {
                         .setLong    (1, aStartFetchingAt.toEpochMilli())
                         .setString  (2, fetchId)
                         .setSerialConsistencyLevel(ConsistencyLevel.LOCAL_SERIAL)
+                        .setConsistencyLevel(ConsistencyLevel.LOCAL_QUORUM)
                         .build()
         );
 

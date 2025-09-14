@@ -29,6 +29,7 @@ public class SetValueStatement {
                         .setString  (0, aValue)
                         .setString  (1, keyText)
                         .setSerialConsistencyLevel(ConsistencyLevel.LOCAL_SERIAL)
+                        .setConsistencyLevel(ConsistencyLevel.LOCAL_QUORUM)
                         .build()
         );
 

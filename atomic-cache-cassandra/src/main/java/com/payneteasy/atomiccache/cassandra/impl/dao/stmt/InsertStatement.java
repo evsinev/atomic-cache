@@ -34,6 +34,7 @@ public class InsertStatement {
                         .setInstant (1, aStartFetchingAt)
                         .setUuid    (2, fetchId)
                         .setSerialConsistencyLevel(ConsistencyLevel.LOCAL_SERIAL)
+                        .setConsistencyLevel(ConsistencyLevel.LOCAL_QUORUM)
                         .build()
         );
 

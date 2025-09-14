@@ -37,6 +37,7 @@ public class UpdateStartFetchingStatement {
                         .setString  (2, keyText)
                         .setUuid    (3, aPreviousFetchId)
                         .setSerialConsistencyLevel(ConsistencyLevel.LOCAL_SERIAL)
+                        .setConsistencyLevel(ConsistencyLevel.LOCAL_QUORUM)
                         .build()
         );
 

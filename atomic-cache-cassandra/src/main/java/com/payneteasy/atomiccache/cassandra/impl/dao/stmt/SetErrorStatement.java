@@ -29,6 +29,7 @@ public class SetErrorStatement {
                         .setString  (0, keyText)
                         .setString  (1, aErrorMessage)
                         .setSerialConsistencyLevel(ConsistencyLevel.LOCAL_SERIAL)
+                        .setConsistencyLevel(ConsistencyLevel.LOCAL_QUORUM)
                         .build()
         );
 
