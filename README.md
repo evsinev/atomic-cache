@@ -37,12 +37,12 @@ Add the following dependencies to your project:
 <dependency>
     <groupId>com.payneteasy.atomic-cache</groupId>
     <artifactId>atomic-cache-api</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0-1</version>
 </dependency>
 <dependency>
     <groupId>com.payneteasy.atomic-cache</groupId>
     <artifactId>atomic-cache-cassandra</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0-1</version>
 </dependency>
 ```
 
