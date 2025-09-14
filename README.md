@@ -109,7 +109,7 @@ CREATE KEYSPACE atomic_cache_test
          AND durable_writes = true;
 ```
 
-### Creating table
+### Creating tables
 
 ```cassandraql
 CREATE TABLE atomic_cache
@@ -122,4 +122,11 @@ CREATE TABLE atomic_cache
     fetch_id            uuid,
     PRIMARY KEY (key)
 ) with default_time_to_live = 7200;
+
+CREATE TABLE atomic_cache_lock
+(
+    key                 text,
+    owner               text,
+    PRIMARY KEY (key)
+) with default_time_to_live = 120;
 ```

@@ -9,6 +9,7 @@
     <modules>
         <module>atomic-cache-api</module>
         <module>atomic-cache-cassandra</module>
+        <module>atomic-cache-guava</module>
         <module>atomic-cache-test</module>
     </modules>
 
@@ -53,6 +54,12 @@
             <dependency>
                 <groupId>com.payneteasy.atomic-cache</groupId>
                 <artifactId>atomic-cache-cassandra</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.payneteasy.atomic-cache</groupId>
+                <artifactId>atomic-cache-guava</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -129,6 +136,11 @@
                 <scope>test</scope>
             </dependency>
 
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>33.4.8-jre</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
